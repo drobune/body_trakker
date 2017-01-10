@@ -19,11 +19,12 @@ var app         = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 app.set('superSecret', config.secret);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(express.static('public'))
 
 app.use(morgan('dev'));
 

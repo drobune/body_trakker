@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1
+   img(src='/images/logo.png')
+  p 体組成を記録しましょう
+
+  section
+    div
+      form(action='/users' method="post")
+        fieldset
+          input(type="text", name="name" placeholder="ユーザー名")
+          input(type="text", name="pass" placeholder="パスワード")
+          p.buttons
+            input(type="submit", value="マイページ")
+    div
+      form(method="get")
+        fieldset
+          input(type="text", name="name" placeholder="ユーザー名")
+          p.buttons
+            input(type="submit", value="の人のデータを見る")

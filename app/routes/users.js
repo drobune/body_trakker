@@ -1,16 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var app         = express();
 
 var User   = require('../models/user');
 
-router.get('/', function(req, res) {
-  User.find({}, function(err, users) {
-    if (err) throw err;
-    res.json(users);
-  });
-});
-
-router.post('/authenticate', function(req, res) {
+router.post('/', function(req, res) {
 
   User.findOne({
     name: req.body.name
@@ -74,11 +68,10 @@ router.use(function(req, res, next) {
 });
 
 // for create test user to db
-app.get('/drobune_up', function(req, res) {
+router.get('/drobune_up', function(req, res) {
   var demo = new User({
     name: 'dro',
-    password: 'bune',   // TODO: encrypt password
-    admin: true
+    password: 'bune'   // TODO: encrypt password
   });
 
   demo.save(function(err) {
@@ -87,6 +80,10 @@ app.get('/drobune_up', function(req, res) {
     console.log('User saved successfully');
     res.json({ success: true});
   });
+});
+
+router.get('/:id', function(req, req) {
+  console.log("idddddd")
 });
 
 module.exports = router;
