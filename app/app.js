@@ -10,8 +10,6 @@ var port = process.env.PORT || 8080;
 var mongoose    = require('mongoose');
 mongoose.connect(config.database);
 
-var jwt    = require('jsonwebtoken');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 

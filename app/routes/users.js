@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var app         = express();
-
+var jwt    = require('jsonwebtoken');
+var config = require('../config');
 var User   = require('../models/user');
 
-router.post('/', function(req, res) {
+app.set('superSecret', config.secret);
 
+
+router.post('/', function(req, res) {
   User.findOne({
     name: req.body.name
   }, function(err, user) {
@@ -41,10 +44,26 @@ router.post('/', function(req, res) {
   });
 });
 
+// for create test user to db
+router.get('/drobune_up', function(req, res) {
+  var demo = new User({
+    name: 'dro',
+    password: 'bune'   // TODO: encrypt password
+  });
+
+  demo.save(function(err) {
+    if (err) throw err;
+
+    console.log('User saved successfully');
+    res.json({ success: true});
+  });
+});
+
 // Authentification Filter
 router.use(function(req, res, next) {
   // get token from body:token or query:token of Http Header:x-access-token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  console.log(req);
 
   // validate token
   if (!token) {
@@ -67,22 +86,8 @@ router.use(function(req, res, next) {
   });
 });
 
-// for create test user to db
-router.get('/drobune_up', function(req, res) {
-  var demo = new User({
-    name: 'dro',
-    password: 'bune'   // TODO: encrypt password
-  });
 
-  demo.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true});
-  });
-});
-
-router.get('/:id', function(req, req) {
+router.get('/:id(\\w+)', function(req, req) {
   console.log("idddddd")
 });
 
