@@ -1,21 +1,20 @@
 extends layout
 
 block content
-  h1
-   img(src='/images/logo.png')
-  p 体組成を記録しましょう
+  div.col-12#hellhead
+    h1
+     img(src='/images/logo.png')
+    p 体組成を記録しましょう
 
   section
-    div
+    div.col-6.hellform
       form(action='/users' method="post")
-        fieldset
-          input(type="text", name="name" placeholder="ユーザー名")
-          input(type="text", name="pass" placeholder="パスワード")
-          p.buttons
-            input(type="submit", value="マイページ")
-    div
+        input(type="text", name="name", class="form-input", placeholder="ユーザー名")
+        input(type="text", name="password", class="form-input", placeholder="パスワード")
+        div
+          input(type="submit", class="form-input", value="記録する")
+    div.col-5.hellform
       form(method="get")
-        fieldset
-          input(type="text", name="name" placeholder="ユーザー名")
-          p.buttons
-            input(type="submit", value="の人のデータを見る")
+        input(type="text", name="name", class="form-input", placeholder="ユーザー名")
+        div
+          input(type="submit", class="form-input", value="の体組成を見る")
