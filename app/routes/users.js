@@ -4,16 +4,16 @@ var app         = express();
 var jwt    = require('jsonwebtoken');
 var config = require('../config');
 var User   = require('../models/user');
+var cookieParser = require('cookie-parser')
 
+app.use(cookieParser())
 app.set('superSecret', config.secret);
-
 
 router.post('/', function(req, res) {
   User.findOne({
     name: req.body.name
   }, function(err, user) {
     if (err) throw err;
-    console.log(req.body.name)
     // validation
     if (!user) {
       res.json({
@@ -33,14 +33,10 @@ router.post('/', function(req, res) {
 
     // when valid -> create token
     var token = jwt.sign(user, app.get('superSecret'), {
-      expiresIn: '24h'
+      expiresIn: '7d'
     });
-
-    res.json({
-      success: true,
-      message: 'Authentication successfully finished.',
-      token: token
-    });
+    res.cookie('space', token, {maxAge:3600*24*7, httpOnly:true});
+    res.redirect('/users/'+req.body.name+'/input');
   });
 });
 
@@ -59,11 +55,16 @@ router.get('/drobune_up', function(req, res) {
   });
 });
 
+router.get('/:id(\\w+)', function(req, res) {
+  res.json({
+    success: true,
+    message: 'id page'
+  });
+});
+
 // Authentification Filter
 router.use(function(req, res, next) {
-  // get token from body:token or query:token of Http Header:x-access-token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  console.log(req);
+  var token = req.cookies.space;
 
   // validate token
   if (!token) {
@@ -86,9 +87,12 @@ router.use(function(req, res, next) {
   });
 });
 
-
-router.get('/:id(\\w+)', function(req, req) {
-  console.log("idddddd")
+router.get('/:id(\\w+)/input', function(req, res) {
+  res.json({
+    success: true,
+    message: 'input page'
+  });
 });
+
 
 module.exports = router;
