@@ -3,9 +3,13 @@ html
   head
     title='hellsu | オンライン体組成記録サービス'
     meta(description='ダイエットしたいのか長生きしたいのか知りませんがタニタやオムロンなどの体組成計の値を毎日メモしましょう．細く短く生きるのもいいんじゃないでしょうか．')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/siimple.css')
-  body
-    block content
+    link(rel='stylesheet', href='/dist/css/style.css')
+    link(rel='stylesheet', href='/dist/css/siimple.css')
+    link(rel='stylesheet', href='/dist/css/datepicker.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='/dist/js/datepicker.min.js')
+    script(src='/dist/js/i18n/datepicker.en.js')
+body
+  block content
     div.col-12#hellfoot
       a(href="https://twitter.com/drobune", target="_blank") contact
