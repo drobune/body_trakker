@@ -33,9 +33,9 @@ router.post('/', function(req, res) {
 
     // when valid -> create token
     var token = jwt.sign(user, app.get('superSecret'), {
-      expiresIn: '7d'
+      expiresIn: '365d'
     });
-    res.cookie('space', token, {maxAge:3600*24*7, httpOnly:true});
+    res.cookie('space', token, {maxAge:3600000*24*365, httpOnly:true});
     res.redirect('/users/'+req.body.name+'/input');
   });
 });
@@ -88,11 +88,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/:id(\\w+)/input', function(req, res) {
-  res.json({
-    success: true,
-    message: 'input page'
-  });
+  res.render('input');
 });
-
 
 module.exports = router;
