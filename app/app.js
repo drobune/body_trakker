@@ -17,7 +17,8 @@ var users = require('./routes/users');
 var app         = express();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
