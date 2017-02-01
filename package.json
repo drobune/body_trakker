@@ -9,6 +9,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-react-views": "^0.10.2",
+    "highcharts": "^5.0.7",
     "jsonwebtoken": "^7.2.1",
     "material-ui": "^0.16.7",
     "mongoose": "^4.7.6",
@@ -16,6 +17,7 @@
     "pug": "^2.0.0-beta6",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-highcharts": "^11.5.0",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
