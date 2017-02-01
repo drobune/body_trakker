@@ -1,23 +1,17 @@
-font-family: 'Roboto', sans-serif;
+html {
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
 }
 
-a {
-  color: #00B7FF;
-}
-
-#hellhead {
-    text-align: center;
-    background-color: #dcffae;
-}
-
-.hellform {
-    text-align: center;
-}
-
-#hellfoot {
-    text-align: center;
+#topbar button svg {
+    fill: #212121
 }

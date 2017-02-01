@@ -1,15 +1,15 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default');
-
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Top extends React.Component {
   render() {
     return (
-      <DefaultLayout title={this.props.title}>
-        <div>Hello {this.props.name}</div>
-      </DefaultLayout>
+      <MuiThemeProvider>
+        <DefaultLayout title={this.props.title}>
+          <div>Hello {this.props.name}</div>
+        </DefaultLayout>
+      </MuiThemeProvider>
     );
   }
 }
