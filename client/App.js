@@ -4,7 +4,7 @@ var Chart = require('./components/chart');
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 var Highcharts = require('highcharts');
 
-class Top extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
@@ -17,4 +17,4 @@ class Top extends React.Component {
   }
 }
 
-module.exports = Top;
+module.exports = App;

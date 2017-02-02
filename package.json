@@ -4,7 +4,9 @@
   "description": "init",
   "main": "index.js",
   "dependencies": {
+    "babelify": "^7.3.0",
     "body-parser": "^1.15.2",
+    "browserify": "^14.0.0",
     "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
@@ -23,11 +25,12 @@
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "express-generator": "^4.14.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "build": "babel client -d server/public/dist/js"
   },
   "repository": {
     "type": "git",
