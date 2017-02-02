@@ -9,9 +9,9 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <DefaultLayout title={this.props.title}>
-          <div>Hello {this.props.name}</div>
           <Chart />
         </DefaultLayout>
+        <div id='footer'><a href='https://twitter.com/drobune'>contact</a></div>
       </MuiThemeProvider>
     );
   }

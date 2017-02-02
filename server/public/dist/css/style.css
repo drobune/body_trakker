@@ -12,6 +12,11 @@ body {
     line-height: 24px;
 }
 
-#topbar button svg {
-    fill: #212121
+#footer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+#footer a {
+    color: #BDBDBD;
 }
