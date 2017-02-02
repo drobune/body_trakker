@@ -30,7 +30,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel client -d server/public/dist/js"
+    "build": " ./node_modules/.bin/browserify client -o bundle.js -t babelify  server/public/dist/js/index.js"
   },
   "repository": {
     "type": "git",
